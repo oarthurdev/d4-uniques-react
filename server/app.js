@@ -39,7 +39,7 @@ app.use('/api', itemRoutes);
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Fallback para servir o frontend React em todas as outras rotas
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
