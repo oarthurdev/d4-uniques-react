@@ -46,5 +46,3 @@ app.get('/', (req, res) => {
 app.use(cors(corsOptions));
 // Routes
 app.use('/api', itemRoutes);
-
-module.exports = app;
