@@ -38,7 +38,7 @@ const corsOptions = {
 };
 
 // Servir o frontend React
-app.get('/home', (req, res) => {
+app.get('', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
