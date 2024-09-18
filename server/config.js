@@ -6,7 +6,9 @@ const config = {
     SQLALCHEMY_DATABASE_URI: process.env.SQLALCHEMY_DATABASE_URI || 'postgresql://localhost:5432/uniques-d4',
     PERMANENT_SESSION_LIFETIME: 30 * 60 * 1000, // 30 minutos em milissegundos
     PLACEHOLDER_IMAGE_URL: 'https://via.placeholder.com/200x200',
-    BASE_URL: 'http://localhost:5000',
+    BASE_URL: process.env.NODE_ENV === 'production' 
+    ? process.env.BASE_URL_PROD 
+    : process.env.BASE_URL,
     CODDEX_API_URL: 'https://d4api.dev/api/codex',
     UNIQUES_API_URL: 'https://d4api.dev/api/uniques',
     BATTLE_NET_CLIENT_ID: process.env.BATTLE_NET_CLIENT_ID || 'your-client-id',

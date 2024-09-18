@@ -1,5 +1,5 @@
 const express = require('express');
-const { updateLocalData, getItems } = require('../controllers/itemController');
+const { updateLocalData, getItems } = require('../controllers/ItemController');
 const { listClass } = require('../controllers/ClassController');
 const { battleNetLogin, callback, logout } = require('../controllers/authController');
 const authenticateToken = require('../middleware/authMiddleware');
