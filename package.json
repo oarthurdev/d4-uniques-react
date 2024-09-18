@@ -21,7 +21,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "build": "react-scripts build",
-    "copy-build": "npm run build && if exist server\\client\\build rd /s /q server\\client\\build && xcopy build server\\client\\build /e /i",
+    "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
     "start-server": "cd server && npm run start",
     "deploy": "npm-run-all copy-build start-server"
   },
