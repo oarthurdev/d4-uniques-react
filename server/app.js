@@ -7,17 +7,22 @@ const itemRoutes = require('./routes/ItemRoutes');
 const path = require('path');
 const app = express();
 
-// Middleware
-app.use(bodyParser.json());
+// Middleware para parsear cookies
 app.use(cookieParser(process.env.SESSION_SECRET));
-app.use(cors({
-    origin: '*', // ou especifique seu domínio frontend em produção
+
+// Middleware para configurar CORS
+const corsOptions = {
+    origin: '*', // Substitua pelo domínio do frontend em produção
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+    credentials: true // Permite cookies e headers de autorização
+};
+app.use(cors(corsOptions));
 
-// Sessão
+// Middleware para parsear o corpo das requisições
+app.use(bodyParser.json());
+
+// Middleware para sessões
 const sessionConfig = {
     id: "1",
     secret: "1234",
@@ -26,7 +31,7 @@ const sessionConfig = {
     cookie: {
         maxAge: 1000 * 60 * 30,
         sameSite: true,
-        secure: false, // Ajuste para true em produção com HTTPS
+        secure: false,
         httpOnly: true
     }
 };
@@ -35,12 +40,12 @@ app.use(session(sessionConfig));
 // Rotas da API
 app.use('/api', itemRoutes);
 
-// Depois de configurar as rotas da API, sirva os arquivos estáticos do React
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-// Fallback para servir o frontend React em todas as outras rotas
+// Servir o frontend React apenas para a rota "/"
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
+// Servir os arquivos estáticos para todas as outras rotas
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 module.exports = app;
