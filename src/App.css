@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+/* src/App.css */
+.footer {
+  background-color: #343a40;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mt-auto {
+  margin-top: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mt-3 {
+  margin-top: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
+.min-vh-100 {
   min-height: 100vh;
+}
+
+/* CSS Global para o Body */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('/images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ajustes para o Container principal */
+.container {
+  max-width: 1200px;
+}
+
+/* Classe adicional para garantir alinhamento dos itens */
+.item-card-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px; /* Espaçamento entre os cards */
+}
+
+/* Alinhamento e responsividade dos cards */
+.item-card-wrapper .col-md-4 {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Certifique-se de que o Header tem uma altura adequada e não sobreponha o conteúdo */
+.header {
+  z-index: 1001; /* O Header deve estar acima do sticky header */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilo para a barra de pesquisa, botão e select para ficarem no topo */
+.sticky-header {
+  position: sticky;
+  top: 60px; /* Ajuste conforme a altura do Header */
+  padding: 10px 0;
+  z-index: 1000; /* Garante que o sticky header fique acima de outros elementos */
+  margin-bottom: 10px; /* Adiciona um espaço abaixo do sticky header */
+}
+
+/* Ajustes para os elementos dentro da sticky header */
+.sticky-header .form-control {
+  margin-bottom: 10px;
+}
+
+.login-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Cor de fundo ao passar o mouse */
+}
+
+.login-icon {
+  width: 24px; /* Ajuste o tamanho do ícone conforme necessário */
+  height: 24px;
+  margin-right: 8px; /* Espaçamento entre o ícone e o texto */
+}
+
+.login-text {
+  font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
 }

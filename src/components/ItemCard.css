@@ -1,0 +1,73 @@
+/* src/components/ItemCard.css */
+.item-card {
+    width: 100%;
+    max-width: 300px; /* Define a largura máxima do card */
+    margin: 0 auto; /* Centraliza o card horizontalmente */
+    border-radius: 10px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que a imagem não ultrapasse os limites do card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para um efeito de profundidade */
+    position: relative; /* Necessário para posicionamento absoluto do ícone */
+    height: 500px; /* Altura fixa para o card */
+}
+
+.mythic-border {
+    border: 4px solid #993399 !important; /* Borda roxa mais grossa para itens do tipo 'Mythic' */
+    box-shadow: 0 0 15px rgba(128, 0, 128, 0.5); /* Sombra roxa para destacar o card */
+}
+
+.item-card-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px; /* Ajuste a altura do contêiner da imagem conforme necessário */
+}
+
+.item-card-header {
+    position: absolute; /* Permite posicionamento absoluto dentro do card */
+    top: 10px; /* Espaçamento do topo */
+    right: 10px; /* Espaçamento da direita */
+    z-index: 1; /* Coloca o ícone sobre outros elementos */
+}
+
+.item-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, z-index 0s ease 0.3s;
+    z-index: 1;
+}
+
+.item-card-image-wrapper:hover .item-card-image {
+    transform: scale(1.5); /* Amplia a imagem para 150% do tamanho original */
+    z-index: 10;
+    transition: transform 0.3s ease, z-index 0s ease;
+}
+
+.item-card-body {
+    padding: 1rem;
+}
+
+.item-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.item-card-text {
+    font-size: 0.875rem;
+}
+
+.favorite-icon {
+    font-size: 1.5rem; /* Tamanho do ícone */
+    cursor: pointer; /* Mostra que o ícone é clicável */
+    color: #ddd; /* Cor padrão da estrela */
+    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Adiciona transições suaves para transformações e sombras */
+}
+
+.favorite-icon.favorite {
+    color: #f39c12; /* Cor da estrela quando favoritada */
+}
+
+.favorite-icon:hover {
+    color: #f39c12; /* Cor da estrela no hover */
+    transform: scale(1.2); /* Aumenta o tamanho da estrela no hover */
+}

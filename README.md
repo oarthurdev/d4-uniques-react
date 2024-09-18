@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# **D4 Unique Items Viewer**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Welcome, Hero!** This is your gateway to exploring the unique items of Diablo 4. Harness the power of the API to view and manage your precious loot.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## **⚔️ Features**
 
-### `npm start`
+- **View Unique Items**: Browse through the legendary items of Diablo 4.
+- **Filter by Class**: Refine your search based on your character's class.
+- **Image Display**: See the visual representation of each item.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **🔧 Setup**
 
-### `npm test`
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+2. **Run the APP**:
+    ```bash
+    npm run deploy
+    ```
+3. Access the page at http://localhost:5000.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **🛡️ Routes**
 
-### `npm run build`
+- **/:** List of unique items with filtering options.
+- **/image:** Fetch the image URL for a specific item.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **⚠️ Troubleshooting**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Error 429:** API rate limit exceeded. Retry after some time.
+- **Data Issues:** Ensure **uniques_data.json** is properly updated.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## **📝 License**
 
-### `npm run eject`
+- MIT License. See LICENSE for details.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<hr>
+<div align="center">
+<b>May your journey be prosperous and your loot <font color='orange'>legendary!</font></b>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</div> 

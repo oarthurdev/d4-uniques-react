@@ -1,3 +1,4 @@
+/* No seu arquivo CSS, por exemplo App.css */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +6,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Adiciona o background-image */
+  background-image: url('/images/background.jpg'); /* Caminho relativo a partir da pasta public */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
 }
 
 code {

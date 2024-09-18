@@ -1,0 +1,43 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("SQLALCHEMY_DATABASE_URI")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Item {
+  id          Int    @id @default(autoincrement())
+  name        String  @unique
+  type        String
+  class       String
+  description String
+  image_url   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([name], name: "item_name_index")
+}
+
+// Define the User model
+model User {
+  id         Int         @unique
+  battletag       String        @unique
+  jwtToken   String?     // Optional field for storing JWT token
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  favorites  Favorite[]  // One-to-many relationship with Favorite
+
+  @@index([id], name: "user_id_index") // Unique index on id
+}
+
+// Define the Favorite model
+model Favorite {
+  id       Int   @default(autoincrement())
+  itemName String
+  userId   Int
+  user     User   @relation(fields: [userId], references: [id])
+
+  @@id([userId, itemName]) // Define a chave primária composta
+}

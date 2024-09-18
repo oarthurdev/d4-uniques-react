@@ -1,0 +1,11 @@
+/* src/components/Header.css */
+.logout-button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.logout-button svg {
+    fill: #fff;
+}
