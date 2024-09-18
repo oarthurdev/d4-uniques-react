@@ -7,22 +7,7 @@ const itemRoutes = require('./routes/ItemRoutes');
 const path = require('path');
 const app = express();
 
-// Middleware para parsear cookies
-app.use(cookieParser(process.env.SESSION_SECRET));
-
-// Middleware para configurar CORS
-const corsOptions = {
-    origin: '*', // Substitua pelo domínio do frontend em produção
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Permite cookies e headers de autorização
-};
-app.use(cors(corsOptions));
-
-// Middleware para parsear o corpo das requisições
-app.use(bodyParser.json());
-
-// Middleware para sessões
+// Middleware
 const sessionConfig = {
     id: "1",
     secret: "1234",
@@ -31,21 +16,32 @@ const sessionConfig = {
     cookie: {
         maxAge: 1000 * 60 * 30,
         sameSite: true,
-        secure: false,
+        secure: false, // Ajustar para true em conexões HTTPS
         httpOnly: true
     }
 };
-app.use(session(sessionConfig));
 
-// Rotas da API
+app.use(session(sessionConfig));
+app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(bodyParser.json());
+
+const corsOptions = {
+    origin: '*', // Ajustar para o domínio do frontend em produção
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+
+// API Routes
 app.use('/api', itemRoutes);
 
-// Servir o frontend React apenas para a rota "/"
-app.get('/', (req, res) => {
+// Serve React build files
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
-
-// Servir os arquivos estáticos para todas as outras rotas
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 module.exports = app;
