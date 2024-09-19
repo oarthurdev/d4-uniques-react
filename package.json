@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
-    "deploy": "rm -rf node_modules && rm -rf package-lock.json && npm install && npm run build && npm run start"
+    "deploy": "npm install && npm run build && npm run start"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "./server/client"
+  "homepage": "/server/client/build"
 }
