@@ -9,6 +9,9 @@ const app = express();
 
 // Middleware
 const sessionConfig = {
+    store: new (require('connect-pg-simple')(session))({
+        conString: process.env.SQLALCHEMY_DATABASE_URI
+    }),
     id: "1",
     secret: "1234",
     resave: false,
