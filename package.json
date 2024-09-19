@@ -20,8 +20,7 @@
   },
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
-    "build": "npm run build-frontend",
-    "build-frontend": "react-scripts build && mv build server/client/",
+    "build": "npm run build",
     "copy-build": "node copy-build.js",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
@@ -44,5 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "./server/client"
 }
