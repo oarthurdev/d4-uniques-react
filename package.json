@@ -21,9 +21,10 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "build": "react-scripts build",
+    "serve": "npm install -g serve && serve -s build",
     "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
     "start-server": "cd server && npm install && npm run start",
-    "deploy": "npm-run-all copy-build start-server"
+    "deploy": "npm-run-all serve start-server"
   },
   "eslintConfig": {
     "extends": [
