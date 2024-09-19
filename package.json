@@ -20,12 +20,11 @@
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
-    "build": "npm run prisma:generate && react-scripts build",
-    "prisma:generate": "cd server && npx prisma generate && cd ../",
-    "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
-    "start-server": "cd server && npm install && npm run start",
-    "start-frontend": "node server.js",
-    "deploy": "npm-run-all copy-build start-server"
+    "build": "react-scripts build",
+    "copy-build": "rm -rf server/client/build && cp -r build server/client/build",
+    "prisma:generate": "cd server && npx prisma generate",
+    "start-server": "cd server && npm install && npm start",
+    "deploy": "npm-run-all prisma:generate build copy-build start-server"
   },
   "eslintConfig": {
     "extends": [
