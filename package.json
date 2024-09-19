@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "build": "react-scripts build",
     "copy-build": "rm -rf server/client/build && cp -r build server/client/build",
-    "prisma:generate": "cd server && npx prisma generate",
+    "prisma:generate": "cd server && npx prisma generate && cd ..",
     "start-server": "cd server && npm install && npm start",
     "start-frontend": "node src/server.js",
     "deploy": "npm-run-all prisma:generate build copy-build start-server start-frontend"
