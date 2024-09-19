@@ -8,7 +8,7 @@
         "distDir": "server/client/build",
         "buildCommand": "npm run deploy"
       }
-    },
+    }
   ],
   "routes": [
     {
