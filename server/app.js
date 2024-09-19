@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const itemRoutes = require('./routes/ItemRoutes');
 const app = express();
+const path = require('path');
 
 // Middleware
 const sessionConfig = {
