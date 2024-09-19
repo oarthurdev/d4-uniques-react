@@ -11,4 +11,10 @@ server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../server/client/build', 'index.html'));
 });
 
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(process.env.PORT, () => {
+      console.log('Servidor rodando na porta ', process.env.PORT);
+  });
+}
+
 module.exports = server;

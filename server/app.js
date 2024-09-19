@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const itemRoutes = require('./routes/ItemRoutes');
 const app = express();
+const path = require('path');
 
 // Middleware
 const sessionConfig = {
@@ -39,5 +40,19 @@ app.use(cors(corsOptions));
 // API Routes
 app.use('/api', itemRoutes);
 
+// Rota para servir o frontend no modo de produção
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Rota de fallback para o frontend React
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(process.env.PORT, () => {
+        console.log('Servidor rodando na porta ', process.env.PORT);
+    });
+}
 
 module.exports = app;

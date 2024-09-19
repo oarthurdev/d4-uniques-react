@@ -103,11 +103,11 @@ const updateLocalData = async (req, res) => {
 // Função para buscar itens com base em filtros
 const getItems = async (req, res) => {
     try {
-        const { search = [], classFilter = '', page = 1, pageSize = 10 } = req.query;
+        const { search = [], classFilter = '', page = 1, pageSize = 6 } = req.query;
 
         // Validação e normalização dos parâmetros de página
-        const pageNumber = parseInt(page, 10) > 0 ? parseInt(page, 10) : 1;
-        const pageSizeNumber = parseInt(pageSize, 10) > 0 ? parseInt(pageSize, 10) : 10;
+        const pageNumber = parseInt(page, 6) > 0 ? parseInt(page, 6) : 1;
+        const pageSizeNumber = parseInt(pageSize, 6) > 0 ? parseInt(pageSize, 6) : 6;
         const skip = (pageNumber - 1) * pageSizeNumber;
 
         // Criação da consulta com filtros
@@ -151,4 +151,24 @@ const getItems = async (req, res) => {
     }
 };
 
-module.exports = { updateLocalData, getItems };
+// Função para buscar itens com base em filtros
+const getNameItems = async (req, res) => {
+    try {
+        // Consultar os nomes de todos os itens
+        const items = await prisma.item.findMany({
+            select: {
+                name: true
+            },
+            orderBy: { name: 'asc' }
+        });
+
+        res.status(200).json({
+            items
+        });
+    } catch (error) {
+        console.error('Error fetching name items:', error);
+        res.status(500).json({ error: 'Error fetching name items' });
+    }
+};
+
+module.exports = { updateLocalData, getItems, getNameItems };

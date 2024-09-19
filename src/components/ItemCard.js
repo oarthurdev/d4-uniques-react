@@ -25,9 +25,20 @@ const ItemCard = ({ item, isFavorite, onFavoriteToggle }) => {
                 />
             </div>
             <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
+                <Card.Title><span style={{
+                        color: item.type === 'Mythic' ? 'purple' : 'black'
+                        }}>
+                        {item.name}
+                        </span><br /></Card.Title>
                 <Card.Text>
-                    <strong>Type:</strong> {item.type}<br />
+                    <strong>Type: </strong> 
+                        <span style={{
+                        color: item.type === 'Mythic' ? 'purple' : 'black',
+                        fontWeight: item.type === 'Mythic' ? 'bold' : 'normal',
+                        textShadow: item.type === 'Mythic' ? '1px 1px 5px rgba(128, 0, 128, 0.7)' : 'none'
+                        }}>
+                        {item.type}
+                        </span><br />
                     <strong>Class:</strong> {item.class}<br />
                     <strong>Description:</strong> {item.description}
                 </Card.Text>

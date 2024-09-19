@@ -1,7 +1,6 @@
 /* src/components/ItemCard.css */
 .item-card {
     width: 100%;
-    max-width: 300px; /* Define a largura máxima do card */
     margin: 0 auto; /* Centraliza o card horizontalmente */
     border-radius: 10px; /* Bordas arredondadas */
     overflow: hidden; /* Garante que a imagem não ultrapasse os limites do card */

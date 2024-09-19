@@ -31,7 +31,18 @@ const App = () => {
     useEffect(() => {
         fetchClasses();
         fetchFavorites();
+        fetchAllItemNames(); 
     }, []);
+
+    const fetchAllItemNames = async () => {
+        try {
+            const response = await api.get('/api/items/list/name'); // Criar uma rota separada para retornar apenas os nomes dos itens
+            const allNames = response.data.items.map(item => ({ value: item.name, label: item.name }));
+            setNameFilters(allNames); // Isso garante que o Select tenha todas as opções
+        } catch (error) {
+            console.error('Erro ao buscar nomes dos itens:', error);
+        }
+    };
 
     const fetchItems = async () => {
         setLoading(true);
@@ -185,7 +196,7 @@ const App = () => {
                                 placeholder="Digite e selecione nomes..."
                                 value={selectedNames}
                                 onChange={handleSearchChange}
-                                options={items.map(item => ({ value: item.name, label: item.name }))}
+                                options={nameFilters} // Use nameFilters em vez de items
                                 className="basic-multi-select"
                                 classNamePrefix="select"
                                 styles={customStyles}
@@ -200,7 +211,7 @@ const App = () => {
                             </Form.Control>
                         </Col>
                         <Col md="2" className="text-center">
-                            <Button variant="primary" onClick={handleSearchClick}>Pesquisar</Button>
+                            <Button variant="primary" style={{float: 'right'}} onClick={handleSearchClick}>Pesquisar</Button>
                         </Col>
                     </Row>
                 </div>

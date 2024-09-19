@@ -1,5 +1,5 @@
 const express = require('express');
-const { updateLocalData, getItems } = require('../controllers/ItemController');
+const { updateLocalData, getItems, getNameItems } = require('../controllers/ItemController');
 const { listClass } = require('../controllers/ClassController');
 const { battleNetLogin, callback, logout } = require('../controllers/authController');
 const authenticateToken = require('../middleware/authMiddleware');
@@ -12,6 +12,8 @@ router.get('/items/update', updateLocalData);
 
 // Rota para buscar itens com base em filtros
 router.get('/items/list', getItems);
+
+router.get('/items/list/name', getNameItems);
 
 router.get('/classes/list', listClass);
 
