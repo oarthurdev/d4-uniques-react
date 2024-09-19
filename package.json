@@ -20,10 +20,9 @@
   },
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
-    "build": "npm run prisma:generate && npm run build-frontend && npm run copy-build",
+    "build": "npm run build-frontend && npm run copy-build",
     "build-frontend": "react-scripts build",
     "copy-build": "node copy-build.js",
-    "prisma:generate": "cd server && npx prisma generate",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
     "deploy": "npm install && npm run build && npm run start"
