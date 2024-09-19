@@ -2,11 +2,27 @@
   "version": 2,
   "builds": [
     {
+      "src": "server/app.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/routes/**",
+          "server/controllers/**",
+          "server/middleware/**",
+          "server/services/**",
+          "server/utils/**",
+          "prisma/**",
+          "server/package.json"
+        ]
+      }
+    },
+    {
       "src": "src/server.js",
       "use": "@vercel/node",
       "config": {
         "includeFiles": [
-          "server/client/build/**"
+          "server/client/build/**",
+          "package.json"
         ]
       }
     }
