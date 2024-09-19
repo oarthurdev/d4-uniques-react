@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Diablo IV - Unique Items",
+  "name": "Simple app to list unique items from Diablo IV",
   "icons": [
     {
       "src": "favicon.ico",
