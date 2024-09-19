@@ -1,6 +1,5 @@
 const express = require('express');
-const path = require('path');
-const app = require('../server/app'); // Importando as rotas e lógica do app.js (backend)
+const path = require('path');// Importando as rotas e lógica do app.js (backend)
 
 const server = express();
 
