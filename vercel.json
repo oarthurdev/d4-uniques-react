@@ -19,7 +19,8 @@
           "server/controllers/**",
           "server/middleware/**",
           "server/services/**",
-          "server/utils/**"
+          "server/utils/**",
+          "prisma/**"
         ]
       }
     }
@@ -34,12 +35,12 @@
       "dest": "/src/server.js"
     }
   ],
+  "env": {
+    "DATABASE_URL": "@your_database_url"
+  },
   "build": {
     "env": {
       "DATABASE_URL": "@your_database_url"
-    },
-    "commands": {
-      "build": "cd server && npx prisma generate && cd .. && npm run deploy"
     }
   }
 }

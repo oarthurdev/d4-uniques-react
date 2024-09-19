@@ -3,7 +3,8 @@
     "version": "1.0.0",
     "main": "app.js",
     "scripts": {
-        "start": "prisma generate && node app.js"
+        "start": "node app.js",
+        "postinstall": "prisma generate"
     },
     "dependencies": {
         "@prisma/client": "^5.19.1",
