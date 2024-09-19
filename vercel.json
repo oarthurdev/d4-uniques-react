@@ -2,15 +2,6 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "server/client/build/**"
-        ]
-      }
-    },
-    {
       "src": "server/app.js",
       "use": "@vercel/node",
       "config": {
@@ -21,6 +12,15 @@
           "server/services/**",
           "server/utils/**",
           "prisma/**"
+        ]
+      }
+    },
+    {
+      "src": "src/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/client/build/**"
         ]
       }
     }
@@ -41,6 +41,9 @@
   "build": {
     "env": {
       "DATABASE_URL": "@your_database_url"
+    },
+    "commands": {
+      "build": "./prisma-generate.sh"
     }
   }
 }
