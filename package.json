@@ -18,13 +18,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "start": "npm run start-backend && npm run start-frontend",
     "build": "npm run prisma:generate && npm run build-frontend && npm run copy-build",
     "build-frontend": "react-scripts build",
     "copy-build": "rm -rf server/client/build && cp -r build server/client/build",
     "prisma:generate": "cd server && npx prisma generate",
-    "start-server": "npm run build && cd server && npm start",
-    "vercel-build": "npm install && npm run build"
+    "start-backend": "node server/app.js",
+    "start-frontend": "node src/server.js",
+    "vercel-build": "npm install && npm run build && npm run start"
   },
   "eslintConfig": {
     "extends": [
