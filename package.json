@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "node server/app.js",
-    "build": "npm-run-all prisma:generate build-frontend copy-build",
+    "build": "npm run prisma:generate && npm run build-frontend && npm run copy-build",
     "build-frontend": "react-scripts build",
     "copy-build": "rm -rf server/client/build && cp -r build server/client/build",
     "prisma:generate": "cd server && npx prisma generate",
@@ -43,8 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "npm-run-all": "^4.1.5"
   }
 }
