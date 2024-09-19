@@ -34,7 +34,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// API Routes (deve vir antes do middleware de arquivos estáticos)
+// API Routes
 app.use('/api', itemRoutes);
 
 // Serve React build files
@@ -45,4 +45,14 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-module.exports = app;
+// Condição para ambiente de desenvolvimento ou produção
+if (process.env.NODE_ENV !== 'production') {
+    // Se não estiver em produção, inicia o servidor localmente
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+} else {
+    // Se estiver em produção, exporta o app (usado em funções serverless)
+    module.exports = app;
+}
