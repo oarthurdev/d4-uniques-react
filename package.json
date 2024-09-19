@@ -8,7 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
-    "prisma": "^5.0.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",
@@ -22,10 +21,10 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "build": "react-scripts build",
-    "prisma:generate": "prisma generate",
     "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
     "start-server": "cd server && npm install && npm run start",
-    "deploy": "npm run prisma:generate && npm run copy-build && npm run start-server"
+    "start-frontend": "node server.js",
+    "deploy": "npm run copy-build && npm run start-server"
   },
   "eslintConfig": {
     "extends": [
