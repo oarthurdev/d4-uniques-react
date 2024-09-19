@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
-    "build": "npm run build-frontend && npm run copy-build",
-    "build-frontend": "react-scripts build",
+    "build": "npm run build-frontend",
+    "build-frontend": "react-scripts build && mv build server/client/",
     "copy-build": "node copy-build.js",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
