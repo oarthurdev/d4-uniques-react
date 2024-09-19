@@ -40,22 +40,20 @@ app.use(cors(corsOptions));
 // API Routes
 app.use('/api', itemRoutes);
 
-// Serve React build files
-app.use(express.static(path.join(__dirname, 'client/build')));
+// Serve React build files (apenas no ambiente de produção)
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Fallback route to serve the React app
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
-// Condição para ambiente de desenvolvimento ou produção
-if (process.env.NODE_ENV !== 'production') {
-    // Se não estiver em produção, inicia o servidor localmente
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+    // Serve o frontend na rota principal
+    app.get('/', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
-} else {
-    // Se estiver em produção, exporta o app (usado em funções serverless)
-    module.exports = app;
 }
+
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(5000, () => {
+        console.log('Servidor rodando na porta 5000');
+    });
+}
+
+module.exports = app;
