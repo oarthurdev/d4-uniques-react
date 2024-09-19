@@ -1,38 +1,3 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "server/app.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "server/routes/**",
-          "server/controllers/**",
-          "server/middleware/**",
-          "server/services/**",
-          "server/utils/**",
-          "prisma/**"
-        ]
-      }
-    },
-    {
-      "src": "src/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "server/client/build/**"
-        ]
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/server/app.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/src/server.js"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
 }
