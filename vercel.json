@@ -1,27 +1,37 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "server/serverless/api.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "server/client/build"
-        }
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/client/build/**"
+        ]
       }
-    ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/server/serverless/api.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/server/client/build/$1"
+    },
+    {
+      "src": "server/app.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "server/routes/**",
+          "server/controllers/**",
+          "server/middleware/**",
+          "server/services/**",
+          "server/utils/**"
+        ]
       }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/app.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/src/server.js"
+    }
+  ]
+}

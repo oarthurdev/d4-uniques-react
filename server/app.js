@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const itemRoutes = require('./routes/ItemRoutes');
-const path = require('path');
 const app = express();
 
 // Middleware
@@ -39,21 +38,5 @@ app.use(cors(corsOptions));
 
 // API Routes
 app.use('/api', itemRoutes);
-
-// Serve React build files (apenas no ambiente de produção)
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-
-    // Serve o frontend na rota principal
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
-}
-
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(5000, () => {
-        console.log('Servidor rodando na porta 5000');
-    });
-}
 
 module.exports = app;
