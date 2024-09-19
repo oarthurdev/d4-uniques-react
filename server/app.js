@@ -40,6 +40,7 @@ app.use('/api', itemRoutes);
 // Serve React build files
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Fallback route to serve the React app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
