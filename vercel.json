@@ -33,5 +33,13 @@
       "src": "/(.*)",
       "dest": "/src/server.js"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "DATABASE_URL": "@your_database_url"
+    },
+    "commands": {
+      "build": "cd server && npx prisma generate && cd .. && npm run deploy"
+    }
+  }
 }
