@@ -25,7 +25,7 @@
     "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
     "start-server": "cd server && npm install && npm run start",
     "start-frontend": "node server.js",
-    "deploy": "npm run copy-build && npm run start-server"
+    "deploy": "npm-run-all copy-build start-server"
   },
   "eslintConfig": {
     "extends": [
