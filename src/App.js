@@ -36,20 +36,19 @@ const App = () => {
 
     const fetchAllItemNames = async () => {
         try {
-            const response = await api.get('/api/items/list/name'); // Criar uma rota separada para retornar apenas os nomes dos itens
-            const allNames = response.data.items.map(item => ({ value: item.name, label: item.name }));
-            setNameFilters(allNames); // Isso garante que o Select tenha todas as opções
+            const response = await api.get('/api/items/list/name');
+            setNameFilters(response.data.items); // Certifique-se de que está recebendo no formato correto
         } catch (error) {
             console.error('Erro ao buscar nomes dos itens:', error);
         }
     };
-
+    
     const fetchItems = async () => {
         setLoading(true);
         try {
             const response = await api.get('/api/items/list', {
                 params: {
-                    search: nameFilters,
+                    search: selectedNames.map(option => option.value), // Passa somente os nomes selecionados
                     classFilter: selectedClass,
                     page,
                     pageSize: 6,
@@ -88,10 +87,8 @@ const App = () => {
     };
 
     const handleSearchChange = (selectedOptions) => {
-        setSelectedNames(selectedOptions || []);
-        const nameArray = selectedOptions.map(option => option.value);
-        setNameFilters(nameArray);
-    };
+        setSelectedNames(selectedOptions); // Define diretamente as opções selecionadas
+      };
 
     const handleFavoriteToggle = async (itemName) => {
         try {
@@ -196,7 +193,7 @@ const App = () => {
                                 placeholder="Digite e selecione nomes..."
                                 value={selectedNames}
                                 onChange={handleSearchChange}
-                                options={nameFilters} // Use nameFilters em vez de items
+                                options={nameFilters.map(item => ({ value: item.name, label: item.name }))}
                                 className="basic-multi-select"
                                 classNamePrefix="select"
                                 styles={customStyles}
