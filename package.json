@@ -23,7 +23,8 @@
     "build": "react-scripts build",
     "copy-build": "npm run build && rm -rf server/client/build && cp -r build server/client/build",
     "start-server": "cd server && npm install && npm run start",
-    "deploy": "npm-run-all copy-build start-server"
+    "deploy": "npm-run-all copy-build start-server",
+    "project": "npm-run-all copy-build && cd server && cd api && node frontend.js && node items.js"
   },
   "eslintConfig": {
     "extends": [
