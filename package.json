@@ -25,7 +25,7 @@
     "copy-build": "node copy-build.js",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
-    "deploy": "npm install && npm run build && npm run start"
+    "deploy": "npm run build && npm run start"
   },
   "eslintConfig": {
     "extends": [
