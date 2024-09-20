@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "src/server",
+      "src": "src/server.js",
       "use": "@vercel/node",
       "config": {
         "distDir": "server/client/build"
