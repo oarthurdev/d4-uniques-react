@@ -18,7 +18,7 @@
       "use": "@vercel/static"
     }
   ],
-  "buildCommand": "./server/prisma-generate.sh && npm run deploy",
+  "buildCommand": "sh prisma-generate.sh && npm run deploy",
   "routes": [
     {
       "src": "/api/(.*)",
