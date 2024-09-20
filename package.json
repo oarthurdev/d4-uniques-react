@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rm -rf server/client/build && mv build server/client",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
     "deploy": "npm install && npm run build && npm run start"
@@ -42,6 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "./server/client"
+  }
 }

@@ -40,7 +40,16 @@ app.use(cors(corsOptions));
 // API Routes
 app.use('/api', itemRoutes);
 
+
 if (process.env.NODE_ENV !== 'production') {
+    // Rota para servir o frontend no modo de produção
+    app.use(express.static(path.join(__dirname, 'client/build')));
+
+    // Rota de fallback para o frontend React
+    app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    });
+
     app.listen(process.env.PORT, () => {
         console.log('Servidor rodando na porta ', process.env.PORT);
     });
