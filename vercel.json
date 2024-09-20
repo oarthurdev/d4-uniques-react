@@ -8,16 +8,24 @@
     {
       "src": "src/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "server/client/build/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/app.js"
+      "dest": "/server/app.js"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/src/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "server/client/build/index.html"
+      "dest": "/server/client/build/$1"
     }
   ]
 }
