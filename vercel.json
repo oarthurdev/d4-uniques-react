@@ -10,15 +10,10 @@
       "use": "@vercel/node"
     },
     {
-      "src": "server/prisma/schema.prisma",
-      "use": "@vercel/static"
-    },
-    {
       "src": "server/client/build/**",
       "use": "@vercel/static"
     }
   ],
-  "buildCommand": "sh prisma-generate.sh && npm run deploy",
   "routes": [
     {
       "src": "/api/(.*)",

@@ -21,10 +21,9 @@
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
     "build": "BUILD_PATH=server/client/build && react-scripts build",
-    "generate-prisma": "sh prisma-generate.sh",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
-    "deploy": "npm run generate-prisma && npm install && npm run build && npm run start"
+    "deploy": "npm install && npm run build && npm run start"
   },
   "eslintConfig": {
     "extends": [
