@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/server/client/build"
+  "homepage": "./server/client"
 }
