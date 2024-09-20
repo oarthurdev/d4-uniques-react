@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "npm run start-backend && npm run start-frontend",
-    "build": "react-scripts build && rm -rf server/client/build && mv build server/client",
+    "build": "react-scripts build && rm -rf server/client/build && mv build server/client/",
     "generate-prisma": "sh prisma-generate.sh",
     "start-backend": "node server/app.js",
     "start-frontend": "node src/server.js",
