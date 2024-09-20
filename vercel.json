@@ -10,7 +10,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "src/prisma/schema.prisma",
+      "src": "server/prisma/schema.prisma",
       "use": "@vercel/static"
     },
     {
